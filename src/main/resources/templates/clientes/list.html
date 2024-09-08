@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ang="es"
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/layout}"
+>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo}">Plantilla</title>
+</head>
+<body>
+    <div layout:fragment="contenido" class="container">
+        
+        <div class="card my-4">
+            <div class="card-header card text-bg-dark">
+                <h5 class="card-title" th:text="${titulo}">Plantilla</h5>
+            </div>
+            <div class="card-body">
+    
+                <table class="table table-striped table-hover table.bordered">
+                    <thead class="table-striped table-dark table-hover">
+                        <th>#</th>
+                        <th>Apellido</th>
+                        <th>Nombre</th>
+                        <th>DNI</th>
+                    </thead>
+                    <tbody class="table table-success table-striped-columns">
+                        <tr th:each="p : ${clientes}">
+                            <td th:text="${p.id}"></td>
+                            <td th:text="${p.apellido}"></td>
+                            <td th:text="${p.nombre}"></td>
+                            <td th:text="${p.dni}"></td>
+                            <td>
+                                <a th:href="@{/clientes/editar/} + ${p.id}" class="btn btn-sm btn-warning">Editar</a>
+                            </td>
+                            <td>
+                                <a th:href="@{/clientes/borrar/} + ${p.id}" class="btn btn-sm btn-danger" onclick="return confirm('Quieres Borrarme')">Borrar</a>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                    <tfoot class="table-striped table-dark table-hover">
+                        <tr>
+                            <th>#</th>
+                            <th>Apellido</th>
+                            <th>Nombre</th>
+                            <th>DNI</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="card-footer card text-bg-dark">
+                <img src="/img/fondoOscuro.jpg" alt="logotipo" class="img-01"/>
+                <a href="/clientes/nuevo" class="btn btn-outline-primary float-end">
+                    Nuevo Cliente
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script th:fragment="js"></script>
+   
+</body>
+</html>

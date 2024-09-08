@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ang="es"
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/layout}"
+>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla</title>
+</head>
+<body>
+
+    <div layout:fragment="contenido" class="container my-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 th:text="${titulo}" class="card-title"></h5>
+            </div>
+            <form action="/clientes/guardar" method="post" th:object="${cliente}">
+                <div class="card-body">
+                    <div class="form">
+                        <label for="ape" class="form-label">Apellido</label>
+                        <input id="ape" type="text" class="form-control" maxlength="65"
+                        th:field="*{apellido}" th:errorclass="'form-control alert-danger '">
+                    </div>
+                    <div class="form">
+                        <label for="nom" class="form-label">Nombre</label>
+                        <input id="nom" type="text" class="form-control" maxlength="65"
+                        th:field="*{nombre}" th:errorclass="'form-control alert-danger '">
+                    </div>
+                    <div class="form">
+                        <label for="dn" class="form-label">DNI</label>
+                        <input id="dn" type="text" class="form-control" maxlength="65"
+                        th:field="*{dni}" th:errorclass="'form-control alert-danger '">
+                    </div>
+                    <div class="form">
+                        <label for="cat" class="form-label">Categorias</label>
+                        <select name="cat" id="cat" class="form-select">
+                            <option th:each="p : ${categorias}" th:value="${p.id}" th:text="${p}"></option>
+                        </select>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-outline-primary float-end ms-2">
+                        Guardar
+                    </button>
+                    <a href="/clientes/listado" class="btn btn-outline-secondary float-end">
+                        Cancelar
+                    </a>
+                </div>   
+            </form>
+        </div>
+    </div>
+
+    <script th:fragment="js"></script>
+   
+</body>
+</html>

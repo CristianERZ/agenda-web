@@ -1,0 +1,14 @@
+.img-01{
+    width: 350px;
+    height: 250px;
+    border-radius: 25px;
+}
+
+.card-footer{
+    background-image: url(fondoOscuro.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
